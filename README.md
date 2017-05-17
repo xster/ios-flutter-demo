@@ -1,8 +1,5 @@
-# try18_ios_design
+# Flutter iOS Demo
+A sample app for iOS using flutter that looks like:
 
-A new flutter project.
+![alt text](screenshot.png "Screenshot")
 
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](http://flutter.io/).
