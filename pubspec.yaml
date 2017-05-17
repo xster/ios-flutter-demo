@@ -11,7 +11,9 @@ flutter:
     - assets/comments.png
     - assets/file.png
     - assets/git.png
+    - assets/plus.png
     - assets/search.png
+    - assets/up.png
     - assets/reviewer1.jpeg
     - assets/reviewer2.jpg
   uses-material-design: true
