@@ -183,7 +183,7 @@ List<Widget> buildComments() {
             borderRadius: const BorderRadius.all(const Radius.circular(18.0)),
             color: _blue,
           ),
-          margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
           padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
           child: const Text(
             'Hey guys, check this out',
@@ -244,7 +244,7 @@ List<Widget> buildComments() {
             borderRadius: const BorderRadius.all(const Radius.circular(18.0)),
             color: const Color(0xFFE5E5EA),
           ),
-          margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
           padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
           child: const Text(
             'Wow, that\'s pretty impressive. Good job!',
@@ -266,7 +266,7 @@ List<Widget> buildComments() {
             borderRadius: const BorderRadius.all(const Radius.circular(18.0)),
             color: _blue,
           ),
-          margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
           padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
           child: const Text(
             'Yup, I paid 5 Levandowskis for it',
@@ -327,7 +327,7 @@ List<Widget> buildComments() {
             borderRadius: const BorderRadius.all(const Radius.circular(18.0)),
             color: const Color(0xFFE5E5EA),
           ),
-          margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
           padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
           child: const Text(
             '+cc laywercat@, hey Jeff, this is\nwhat I was talking about. Can\nyou clear all my appointments this\nafternoon? I want to hear from\nTim too before we bring everyone\nto Nevada',
@@ -349,7 +349,7 @@ List<Widget> buildComments() {
             borderRadius: const BorderRadius.all(const Radius.circular(18.0)),
             color: _blue,
           ),
-          margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
           padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
           child: const Text(
             'Let me know if I should hold off for now',
