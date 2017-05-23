@@ -24,13 +24,11 @@ class IosDemoApp extends StatelessWidget {
         body: new Stack(
           children: <Widget>[
             new ListView(
-              children:
-                buildHeader()
-                    ..addAll(buildControl())
-                    ..addAll(buildComments())
-            ),
-            new BackdropFilter(
-              filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+              children: <Widget>[
+                new Padding(padding: const EdgeInsets.only(top: 60.0)),
+              ]
+                  ..addAll(buildHeader())
+                  ..addAll(buildComments()),
             ),
             new Align(
               alignment: FractionalOffset.topCenter,
@@ -49,23 +47,102 @@ class IosDemoApp extends StatelessWidget {
 
 List<Widget> buildHeader() {
   return <Widget>[
-    const Padding(
-      padding: const EdgeInsets.only(left: 16.0, top: 16.0),
-      child: const Text(
-        'Add Neural Reading Functions via Implant Interface #204',
-        style: const TextStyle(
-          fontSize: 24.0,
-          fontWeight: FontWeight.w800,
+    new Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: new ClipRRect(
+        borderRadius: const BorderRadius.all(const Radius.circular(16.0)),
+        child: new Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            new Container(
+              decoration: const BoxDecoration(
+                color: const Color(0xFFE5E5E5),
+              ),
+              child: new Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
+                child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    const Text(
+                      'PULL REQUEST',
+                      style: const TextStyle(
+                        color: const Color(0xFF646464),
+                        letterSpacing: -0.8,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    const Text(
+                      'Show More',
+                      style: const TextStyle(
+                        color: const Color(0xFF646464),
+                        letterSpacing: -0.6,
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            new Container(
+              decoration: const BoxDecoration(
+                color: const Color(0xFFF3F3F3),
+              ),
+              child: new Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
+                child: new Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    const Text(
+                      'Add Neural Reading Functions via Implant Interface #204',
+                      style: const TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -0.6,
+                      ),
+                    ),
+                    new Padding(padding: const EdgeInsets.only(top: 16.0)),
+                    new Text(
+                      'REVIEWERS',
+                      style: const TextStyle(
+                        color: const Color(0xFF646464),
+                        fontSize: 12.0,
+                        letterSpacing: -0.6,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    new Padding(padding: const EdgeInsets.only(top: 8.0)),
+                    new Row(
+                      children: <Widget>[
+                        const CircleAvatar(
+                          backgroundImage: const AssetImage('assets/reviewer1.jpeg'),
+                          radius: 22.0,
+                        ),
+                        new Padding(padding: const EdgeInsets.only(left: 2.0)),
+                        new Image(
+                          image: const AssetImage('assets/check-2.png'),
+                          width: 30.0,
+                        ),
+                        new Padding(padding: const EdgeInsets.only(left: 8.0)),
+                        const CircleAvatar(
+                          backgroundImage: const AssetImage('assets/reviewer4.jpg'),
+                          radius: 22.0,
+                        ),
+                        new Padding(padding: const EdgeInsets.only(left: 2.0)),
+                        new Image(
+                          image: const AssetImage('assets/comments-2.png'),
+                          width: 30.0,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
-    ),
-    const Padding(
-      padding: const EdgeInsets.only(left: 18.0, right: 18.0, top: 16.0),
-      child: const DecoratedBox(decoration: const BoxDecoration(
-        border: const Border(top: const BorderSide(
-          color: const Color(0xFFBBBBBB),
-        )),
-      )),
     ),
   ];
 }
@@ -114,7 +191,7 @@ List<Widget> buildControl() {
                         new Column(
                           children: <Widget>[
                             const CircleAvatar(
-                              backgroundImage: const AssetImage('assets/reviewer2.jpg'),
+                              backgroundImage: const AssetImage('assets/reviewer4.jpg'),
                               radius: 22.0,
                             ),
                             const Padding(padding: const EdgeInsets.only(top: 4.0)),
@@ -166,9 +243,9 @@ List<Widget> buildControl() {
         ),
       ],
     ),
-    const Padding(
-      padding: const EdgeInsets.only(left: 18.0, right: 18.0, top: 4.0),
-    ),
+    // const Padding(
+    //   padding: const EdgeInsets.only(left: 18.0, right: 18.0, top: 4.0),
+    // ),
   ];
 }
 
@@ -194,30 +271,12 @@ List<Widget> buildComments() {
             ),
           ),
         ),
-        new Container(
-          decoration: new BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: new LinearGradient(
-              begin: FractionalOffset.topLeft,
-              colors: <Color>[const Color(0xFFA4A9B8), const Color(0xFF858993)],
-            ),
-          ),
-          margin: const EdgeInsets.only(right: 8.0),
-          padding: const EdgeInsets.all(16.0),
-          child: new Text(
-            'OG',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 13.0,
-              fontWeight: FontWeight.w500,
-            ),
-          )
-        ),
       ],
     ),
     new Row(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget> [
         new Container(
           decoration: new BoxDecoration(
@@ -228,8 +287,8 @@ List<Widget> buildComments() {
               colors: <Color>[const Color(0xFFFD5015), const Color(0xFFC72008)],
             ),
           ),
-          margin: const EdgeInsets.only(left: 8.0),
-          padding: const EdgeInsets.all(16.0),
+          margin: const EdgeInsets.only(left: 8.0, bottom: 8.0),
+          padding: const EdgeInsets.all(12.0),
           child: new Text(
             'LA',
             style: const TextStyle(
@@ -247,7 +306,7 @@ List<Widget> buildComments() {
           margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
           padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
           child: const Text(
-            'Wow, that\'s pretty impressive. Good job!',
+            'Wow, that\'s pretty impressive.\nGood job!',
             style: const TextStyle(
               color: Colors.black,
               letterSpacing: -0.4,
@@ -269,7 +328,8 @@ List<Widget> buildComments() {
           margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
           padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
           child: const Text(
-            'Yup, I paid 5 Levandowskis for it',
+            'Let\'s roll it out during I/O',
+            // 'Yup, I paid 5 Levandowskis for it',
             style: const TextStyle(
               color: Colors.white,
               letterSpacing: -0.4,
@@ -277,30 +337,12 @@ List<Widget> buildComments() {
             ),
           ),
         ),
-        new Container(
-          decoration: new BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: new LinearGradient(
-              begin: FractionalOffset.topLeft,
-              colors: <Color>[const Color(0xFFA4A9B8), const Color(0xFF858993)],
-            ),
-          ),
-          margin: const EdgeInsets.only(right: 8.0),
-          padding: const EdgeInsets.all(16.0),
-          child: new Text(
-            'OG',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 13.0,
-              fontWeight: FontWeight.w500,
-            ),
-          )
-        ),
       ],
     ),
     new Row(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget> [
         new Container(
           decoration: new BoxDecoration(
@@ -311,8 +353,8 @@ List<Widget> buildComments() {
               colors: <Color>[const Color(0xFF34CAD6), const Color(0xFF24AAB6)],
             ),
           ),
-          margin: const EdgeInsets.only(left: 8.0),
-          padding: const EdgeInsets.all(16.0),
+          margin: const EdgeInsets.only(left: 8.0, bottom: 8.0),
+          padding: const EdgeInsets.all(12.0),
           child: new Text(
             'DA',
             style: const TextStyle(
@@ -330,7 +372,7 @@ List<Widget> buildComments() {
           margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
           padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
           child: const Text(
-            '+cc laywercat@, hey Jeff, this is\nwhat I was talking about. Can\nyou clear all my appointments this\nafternoon? I want to hear from\nTim too before we bring everyone\nto Nevada',
+            '+cc laywercat@',//, hi guys, what\'s\nhappening. I\'m gonna need\neveryone to go ahead and come\nin tomorrow. So if you could\nbe here at around 9 that\'d\n be great',
             style: const TextStyle(
               color: Colors.black,
               letterSpacing: -0.4,
@@ -352,32 +394,13 @@ List<Widget> buildComments() {
           margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
           padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
           child: const Text(
-            'Let me know if I should hold off for now',
+            'Let me know if I should hold\noff for now',
             style: const TextStyle(
               color: Colors.white,
               letterSpacing: -0.4,
               fontWeight: FontWeight.w300,
             ),
           ),
-        ),
-        new Container(
-          decoration: new BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: new LinearGradient(
-              begin: FractionalOffset.topLeft,
-              colors: <Color>[const Color(0xFFA4A9B8), const Color(0xFF858993)],
-            ),
-          ),
-          margin: const EdgeInsets.only(right: 8.0),
-          padding: const EdgeInsets.all(16.0),
-          child: new Text(
-            'OG',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 13.0,
-              fontWeight: FontWeight.w500,
-            ),
-          )
         ),
       ],
     ),
@@ -387,14 +410,14 @@ List<Widget> buildComments() {
 class IosAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // return new ClipRect(
-      // child: new BackdropFilter(
-        // filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-        return new SizedBox(
+    return new ClipRect(
+      child: new BackdropFilter(
+        filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+        child: new SizedBox(
           height: 45.0 + MediaQuery.of(context).padding.top,
           child: new DecoratedBox(
             decoration: new BoxDecoration(
-              color: const Color(0xEEF8F8F8),
+              color: const Color(0xDDF8F8F8),
               border: const Border(
                 bottom: const BorderSide(
                   width: 0.5,
@@ -424,14 +447,8 @@ class IosAppBar extends StatelessWidget {
                     child: new Row(
                       mainAxisSize: MainAxisSize.min,
                       children: const <Widget>[
-                        const Image(
-                          image: const AssetImage('assets/git.png'),
-                          width: 24.0,
-                          color: const Color(0xFF333333)
-                        ),
-                        const Padding(padding: const EdgeInsets.only(left: 6.0)),
                         const Text(
-                          'Add Neural Re…',
+                          'Add Neural Reading…',
                           style: const TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.w700,
@@ -452,6 +469,8 @@ class IosAppBar extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+        ),
       ),
     );
   }
@@ -467,17 +486,17 @@ class _IosBottomBarState extends State<IosBottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    // return new ClipRect(
-      // child: new BackdropFilter(
-        // filter: new ImageFilter.blur(sigmaX: 100.0, sigmaY: 100.0),
-        return new DecoratedBox(
+    return new ClipRect(
+      child: new BackdropFilter(
+        filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+        child: new DecoratedBox(
           decoration: const BoxDecoration(
             border: const Border(top: const BorderSide(
               color: const Color(0xAABBBBBB),
               width: 0.5,
               style: BorderStyle.solid,
             )),
-            color: const Color(0xEEF8F8F8),
+            color: const Color(0xDDF8F8F8),
           ),
           child: new IconTheme(
             data: const IconThemeData(
@@ -564,6 +583,8 @@ class _IosBottomBarState extends State<IosBottomBar> {
               ),
             ),
           ),
+        ),
+      ),
     );
   }
 }
