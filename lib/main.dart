@@ -486,105 +486,27 @@ class _IosBottomBarState extends State<IosBottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    return new ClipRect(
-      child: new BackdropFilter(
-        filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-        child: new DecoratedBox(
-          decoration: const BoxDecoration(
-            border: const Border(top: const BorderSide(
-              color: const Color(0xAABBBBBB),
-              width: 0.5,
-              style: BorderStyle.solid,
-            )),
-            color: const Color(0xDDF8F8F8),
-          ),
-          child: new IconTheme(
-            data: const IconThemeData(
-              color: _gray,
-              size: 28.0,
-            ),
-            child: new DefaultTextStyle(
-              style: const TextStyle(
-                fontSize: 10.0,
-                letterSpacing: 0.12,
-                color: _gray,
-              ),
-              child: new SizedBox(
-                height: 50.0,
-                child: new Padding(
-                  padding: const EdgeInsets.only(bottom: 4.0),
-                  child: new Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      new Expanded(
-                        child: new Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            new Image(
-                              image: const AssetImage('assets/file.png'),
-                              color: _gray,
-                              width: 25.0,
-                            ),
-                            const Padding(padding: const EdgeInsets.only(top: 4.0)),
-                            new Text('Repository'),
-                          ],
-                        ),
-                      ),
-                      new Expanded(
-                        child: IconTheme.merge(
-                          data: const IconThemeData(
-                            color: _blue,
-                          ),
-                          child: DefaultTextStyle.merge(
-                            style: const TextStyle(color: _blue),
-                            child: new Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                new Icon(Icons.call_merge, size: 30.0),
-                                const Padding(padding: const EdgeInsets.only(top: 2.0)),
-                                new Text('Pull Requests'),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      new Expanded(
-                        child: new Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            new Image(
-                              image: const AssetImage('assets/bug.png'),
-                              color: _gray,
-                              width: 25.0,
-                            ),
-                            const Padding(padding: const EdgeInsets.only(top: 4.0)),
-                            new Text('Issues'),
-                          ],
-                        ),
-                      ),
-                      new Expanded(
-                        child: new Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            new Image(
-                              image: const AssetImage('assets/comments.png'),
-                              color: _gray,
-                              width: 25.0,
-                            ),
-                            const Padding(padding: const EdgeInsets.only(top: 4.0)),
-                            new Text('Notifications'),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
+    return new CupertinoTabBar(
+      items: <BottomNavigationBarItem>[
+        new BottomNavigationBarItem(
+          icon: new ImageIcon(const AssetImage('assets/file.png')),
+          title: new Text('Repository'),
         ),
-      ),
+        new BottomNavigationBarItem(
+          icon: new Icon(Icons.call_merge, size: 28.0),
+          title: new Text('Pull Requests'),
+        ),
+        new BottomNavigationBarItem(
+          icon: new ImageIcon(const AssetImage('assets/bug.png')),
+          title: new Text('Issues'),
+        ),
+        new BottomNavigationBarItem(
+          icon: new ImageIcon(const AssetImage('assets/comments.png')),
+          title: new Text('Notifications'),
+        ),
+      ],
+      currentIndex: currentTab,
+      onTap: (int newTab) { setState(() { currentTab = newTab; }); },
     );
   }
 }
