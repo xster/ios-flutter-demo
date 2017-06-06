@@ -15,40 +15,60 @@ class IosDemoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: new ThemeData(
-        primaryColor: _blue,
-        accentColor: _gray,
-      ),
       title: 'iOS Demo',
-      home: new Scaffold(
-        body: new Stack(
-          children: <Widget>[
-            new ListView(
-              children: <Widget>[
-                new Padding(padding: const EdgeInsets.only(top: 60.0)),
-              ]
-                  ..addAll(buildHeader())
-                  ..addAll(buildComments()),
-            ),
-            new Align(
-              alignment: FractionalOffset.topCenter,
-              child: new CupertinoNavigationBar(
-                leading: new CupertinoButton(
-                  padding: const EdgeInsets.all(0.0),
-                  child: const Text('Cancel'),
-                  onPressed: () {},
-                ),
-                middle: const Text('Add neural reading…', style: const TextStyle(
-                  fontWeight: FontWeight.w700,
-                )),
-                trailing: const ImageIcon(const AssetImage('assets/search.png')),
+      home: new DefaultTextStyle(
+        style: const TextStyle(
+          color: CupertinoColors.black,
+          decorationStyle: null,
+          fontFamily: '.SF UI Text',
+        ),
+        child: new DecoratedBox(
+          decoration: const BoxDecoration(color: CupertinoColors.white),
+          child: new CupertinoScaffold.tabbed(
+            navigationBar: new CupertinoNavigationBar(
+              leading: new CupertinoButton(
+                padding: const EdgeInsets.all(0.0),
+                child: const Text('Cancel'),
+                onPressed: () {},
               ),
+              middle: const Text('Add neural reading…', style: const TextStyle(
+                fontWeight: FontWeight.w700,
+              )),
+              trailing: const ImageIcon(const AssetImage('assets/search.png')),
             ),
-            new Align(
-              alignment: FractionalOffset.bottomCenter,
-              child: new IosBottomBar(),
+            tabBar: new CupertinoTabBar(
+              items: <BottomNavigationBarItem>[
+                new BottomNavigationBarItem(
+                  icon: new ImageIcon(const AssetImage('assets/file.png')),
+                  title: new Text('Repository'),
+                ),
+                new BottomNavigationBarItem(
+                  icon: new Icon(Icons.call_merge, size: 28.0),
+                  title: new Text('Pull Requests'),
+                ),
+                new BottomNavigationBarItem(
+                  icon: new ImageIcon(const AssetImage('assets/bug.png')),
+                  title: new Text('Issues'),
+                ),
+                new BottomNavigationBarItem(
+                  icon: new ImageIcon(const AssetImage('assets/comments.png')),
+                  title: new Text('Notifications'),
+                ),
+              ],
             ),
-          ],
+            pageBuilder: (BuildContext context, int index) {
+              print('building $index');
+              return index == 1
+                ? new ListView(
+                  children: <Widget>[
+                    new Padding(padding: const EdgeInsets.only(top: 60.0)),
+                  ]
+                      ..addAll(buildHeader())
+                      ..addAll(buildComments()),
+                )
+                : new Container();
+            },
+          ),
         ),
       ),
     );
@@ -482,41 +502,6 @@ class IosAppBar extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class IosBottomBar extends StatefulWidget {
-  @override
-  _IosBottomBarState createState() => new _IosBottomBarState();
-}
-
-class _IosBottomBarState extends State<IosBottomBar> {
-  int currentTab = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return new CupertinoTabBar(
-      items: <BottomNavigationBarItem>[
-        new BottomNavigationBarItem(
-          icon: new ImageIcon(const AssetImage('assets/file.png')),
-          title: new Text('Repository'),
-        ),
-        new BottomNavigationBarItem(
-          icon: new Icon(Icons.call_merge, size: 28.0),
-          title: new Text('Pull Requests'),
-        ),
-        new BottomNavigationBarItem(
-          icon: new ImageIcon(const AssetImage('assets/bug.png')),
-          title: new Text('Issues'),
-        ),
-        new BottomNavigationBarItem(
-          icon: new ImageIcon(const AssetImage('assets/comments.png')),
-          title: new Text('Notifications'),
-        ),
-      ],
-      currentIndex: currentTab,
-      onTap: (int newTab) { setState(() { currentTab = newTab; }); },
     );
   }
 }
