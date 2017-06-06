@@ -32,7 +32,17 @@ class IosDemoApp extends StatelessWidget {
             ),
             new Align(
               alignment: FractionalOffset.topCenter,
-              child: new IosAppBar(),
+              child: new CupertinoNavigationBar(
+                leading: new CupertinoButton(
+                  padding: const EdgeInsets.all(0.0),
+                  child: const Text('Cancel'),
+                  onPressed: () {},
+                ),
+                middle: const Text('Add neural reading…', style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                )),
+                trailing: const ImageIcon(const AssetImage('assets/search.png')),
+              ),
             ),
             new Align(
               alignment: FractionalOffset.bottomCenter,
