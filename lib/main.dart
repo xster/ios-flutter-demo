@@ -56,7 +56,7 @@ class IosDemoApp extends StatelessWidget {
                 ),
               ],
             ),
-            pageBuilder: (BuildContext context, int index) {
+            rootTabPageBuilder: (BuildContext context, int index) {
               print('building $index');
               return index == 1
                 ? new ListView(
@@ -66,7 +66,9 @@ class IosDemoApp extends StatelessWidget {
                       ..addAll(buildHeader())
                       ..addAll(buildComments()),
                 )
-                : new Container();
+                : index == 0
+                    ? new Center(child: new FlutterLogo(size: 100.0,))
+                    : new Container();
             },
           ),
         ),
