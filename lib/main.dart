@@ -57,24 +57,84 @@ class IosDemoApp extends StatelessWidget {
               ],
             ),
             rootTabPageBuilder: (BuildContext context, int index) {
-              print('building $index');
-              return index == 1
-                ? new ListView(
-                  children: <Widget>[
-                    new Padding(padding: const EdgeInsets.only(top: 60.0)),
-                  ]
-                      ..addAll(buildHeader())
-                      ..addAll(buildComments()),
-                )
-                : index == 0
-                    ? new Center(child: new FlutterLogo(size: 100.0,))
-                    : new Container();
+              switch (index) {
+                case 0:
+                  return buildTab1();
+                case 1:
+                  return buildTab2();
+                case 2:
+                  return buildTab3(context);
+                case 3:
+                  return buildTab4(context);
+                default:
+                  return new Container();
+              }
             },
           ),
         ),
       ),
     );
   }
+}
+
+Widget buildTab1() {
+  return new Center(child: new FlutterLogo(size: 100.0,));
+}
+
+Widget buildTab2() {
+  return new ListView(
+    children: <Widget>[
+      new Padding(padding: const EdgeInsets.only(top: 60.0)),
+    ]
+        ..addAll(buildHeader())
+        ..addAll(buildComments())
+  );
+}
+
+Widget buildTab3(BuildContext context) {
+  return new Center(child: new CupertinoButton(
+    child: const Text('Next Page'),
+    onPressed: () {
+      Navigator.push(context, new CupertinoPageRoute(
+        builder: (BuildContext context) {
+          return new Column(
+            children: <Widget>[
+              const Text('Page 2'),
+              new CupertinoButton(
+                child: const Text('Back'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        }
+      ));
+    },
+  ));
+}
+
+Widget buildTab4(BuildContext context) {
+  return new Center(child: new CupertinoButton(
+    child: const Text('Next Page'),
+    onPressed: () {
+      Navigator.push(context, new MaterialPageRoute(
+        builder: (BuildContext context) {
+          return new Column(
+            children: <Widget>[
+              const Text('Page 2'),
+              new CupertinoButton(
+                child: const Text('Back'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        }
+      ));
+    },
+  ));
 }
 
 List<Widget> buildHeader() {
